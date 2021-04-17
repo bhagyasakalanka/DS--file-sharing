@@ -3,11 +3,7 @@ package org.uom.cse.cs4262.api;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author Chamin Wickramarathna
- * @date 22/10/2017
- * @since 1.0
- */
+
 public class StatRecord {
     private String searchQuery;
     private Date triggeredTime;

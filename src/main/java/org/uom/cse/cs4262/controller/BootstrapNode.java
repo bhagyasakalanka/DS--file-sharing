@@ -23,11 +23,6 @@ import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author Chanaka Lakmal
- * @date 5/11/2017
- * @since 1.0
- */
 
 @Configuration
 @ComponentScan("org.uom.cse.cs4262")

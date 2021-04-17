@@ -23,9 +23,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-/**
- * @author Chandu Herath
- */
+
 public class MainUI extends javax.swing.JFrame {
 
     /**

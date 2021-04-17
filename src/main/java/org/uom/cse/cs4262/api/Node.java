@@ -6,11 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author Chamin Wickramarathna
- * @date 22/10/2017
- * @since 1.0
- */
 public class Node {
 
     private Credential credential;

@@ -23,11 +23,6 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author Chanaka Lakmal
- * @date 22/10/2017
- * @since 1.0
- */
 
 public class NodeOpsWS implements NodeOps, Runnable {
 

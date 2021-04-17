@@ -2,11 +2,7 @@ package org.uom.cse.cs4262.api;
 
 import java.util.Date;
 
-/**
- * @author Sachithra Dangalla
- * @date 11/8/2017
- * @since 1.0
- */
+
 public class QueryRecord {
     private int sequenceNo;
     private String searchQuery;

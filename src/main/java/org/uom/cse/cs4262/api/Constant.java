@@ -1,10 +1,6 @@
 package org.uom.cse.cs4262.api;
 
-/**
- * @author Chanaka Lakmal
- * @date 22/10/2017
- * @since 1.0
- */
+
 
 public class Constant {
 
