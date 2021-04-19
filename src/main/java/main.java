@@ -1,10 +1,6 @@
-import org.uom.cse.cs4262.api.Constant;
-import org.uom.cse.cs4262.api.Credential;
-import org.uom.cse.cs4262.api.Node;
-
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
+// for testing purposes
 public class main {
 
 
