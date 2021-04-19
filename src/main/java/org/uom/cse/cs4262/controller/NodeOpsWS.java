@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import org.uom.cse.cs4262.api.*;
 import org.uom.cse.cs4262.api.message.Message;
 import org.uom.cse.cs4262.api.message.request.*;
+import org.uom.cse.cs4262.api.message.response.DownloadResponse;
 import org.uom.cse.cs4262.api.message.response.RegisterResponse;
 import org.uom.cse.cs4262.api.message.response.SearchResponse;
 import org.uom.cse.cs4262.api.message.response.UnregisterResponse;
@@ -442,6 +443,70 @@ public class NodeOpsWS implements NodeOps, Runnable {
         this.displayLog.add(log);
         this.logFlag = true;
         System.out.println(log);
+    }
+
+    @Override
+    public boolean download(DownloadRequest downloadRequest, Credential sendCredentials) {
+        String msg = downloadRequest.getMessageAsString(Constant.Command.DOWNLOAD);
+        String uri = Constant.HTTP + sendCredentials.getIp() + ":" + sendCredentials.getPort() + Constant.UrlPattern.DOWNLOAD;
+        try {
+            String result = restTemplate.postForObject(uri, new Gson().toJson(downloadRequest), String.class);
+            if (result.equals("202")) {
+                System.out.println("returning true");
+                return true;
+            }
+            logMe("Sent Download for \"" + downloadRequest.getFileName() + "\" to " + sendCredentials.getIp() + ":" + sendCredentials.getPort() + " at " + getCurrentTime());
+        } catch (ResourceAccessException exception) {
+            //connection refused to the api end point
+
+                logMe(sendCredentials.getIp() + "node is not available and removed from routing table.");
+            //Todo: Remove this neighbour from stat table
+        } catch (HttpServerErrorException exception){
+            logMe(sendCredentials.getIp() + "connection issue.");
+            //
+        }
+        return false;
+    }
+
+    @Override
+    public void downloadOK(DownloadResponse downloadResponse) {
+
+        String msg = downloadResponse.getMessageAsString(Constant.Command.DOWNLOADOK);
+
+        String uri = Constant.HTTP + downloadResponse.getCredential().getIp() + ":" + downloadResponse.getCredential().getPort() + Constant.UrlPattern.DOWNLOADOK;
+        try {
+            downloadResponse.setCredential(node.getCredential());
+            String result = restTemplate.postForObject(uri, new Gson().toJson(downloadResponse), String.class);
+            logMe("Sent DOWNLOADOK to " + downloadResponse.getCredential().getIp() + ":" + downloadResponse.getCredential().getPort() + " at " + getCurrentTime());
+        } catch (ResourceAccessException exception) {
+            //connection refused to the api end point
+            if (node.getRoutingTable().contains(downloadResponse.getCredential())) {
+                node.getRoutingTable().remove(downloadResponse.getCredential());
+//                logMe(searchResponse.getCredential().getIp() + "node is not available and removed from routing table.");
+            }
+            //Todo: Remove this neighbour from stat table
+        } catch (HttpServerErrorException exception){
+            //
+        }
+    }
+
+    @Override
+    public void downloadSuccess(DownloadResponse downloadResponse) {
+        //update statTable
+        String hash = downloadResponse.getHash();
+        int fileSize = downloadResponse.getFileSize();
+
+        logMe("\"" + hash + " " + fileSize +" found at: " + downloadResponse.getCredential().getIp() + ":" + downloadResponse.getCredential().getPort() + " at " + getCurrentTime());
+
+    }
+    @Override
+    public void triggerDownloadRequest(DownloadRequest downloadRequest, Credential downloadCredentials) {
+        String query = downloadRequest.getFileName();
+//        logMe("Sent SEARCH to others for \"" + query + "\" at " + getCurrentTime());
+
+        download(downloadRequest, downloadCredentials);
+
+
     }
 
     public String getCurrentTime() {

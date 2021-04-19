@@ -1,5 +1,7 @@
 package org.uom.cse.cs4262.ui;
 
+import org.uom.cse.cs4262.api.Credential;
+import org.uom.cse.cs4262.api.message.request.DownloadRequest;
 import org.uom.cse.cs4262.api.message.request.SearchRequest;
 import org.uom.cse.cs4262.controller.NodeOpsWS;
 
@@ -12,6 +14,7 @@ import java.util.List;
 public class NodeGUI {
 
     private JButton btnSearch;
+    private JButton btnDownload;
     private JButton btnUnregister;
     private JButton btnLeave;
     private JTextField txtSearch;
@@ -32,6 +35,7 @@ public class NodeGUI {
         this.nodeOpsWS = nodeOpsWS;
 
         btnSearch = new JButton("SEARCH");
+        btnDownload = new JButton("DOWNLOAD");
         btnUnregister = new JButton("UNREGISTER");
         btnLeave = new JButton("LEAVE");
         txtSearch = new JTextField("");
@@ -74,6 +78,7 @@ public class NodeGUI {
 
         containerPane.add(txtSearch);
         containerPane.add(btnSearch);
+        containerPane.add(btnDownload);
         containerPane.add(btnLeave);
         containerPane.add(btnUnregister);
         containerPane.add(tableSearchScrollPane);
@@ -85,6 +90,8 @@ public class NodeGUI {
         btnUnregister.setBounds(btnLeave.getX() + btnLeave.getWidth() + 5, btnLeave.getY(), btnUnregister.getPreferredSize().width, btnLeave.getHeight());
         tableSearchScrollPane.setBounds(5, txtSearch.getY() + txtSearch.getHeight() + 5, btnUnregister.getWidth() + btnUnregister.getX(), 200);
         tableSearchScrollPane.setName("Search Results");
+        btnDownload.setBounds(btnUnregister.getX(), btnUnregister.getY() + btnUnregister.getHeight() + 5, btnUnregister.getWidth() + btnUnregister.getX(), 200);
+
         searchResultTable.setPreferredScrollableViewportSize(new Dimension(btnUnregister.getWidth() + btnUnregister.getX(), 200));
         searchResultTable.setFillsViewportHeight(true);
 
@@ -110,6 +117,25 @@ public class NodeGUI {
 
                 btnSearch.setEnabled(true);
                 btnSearch.setName("SEARCH");
+                txtSearch.selectAll();
+            }
+        });
+        btnDownload.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnDownload.setEnabled(false);
+                btnDownload.setName("Downloading");
+                Credential credential = new Credential("127.0.0.1", 40401, "hi there");
+                DownloadRequest downloadRequest = new DownloadRequest(nodeOpsWS.getNode().getCredential(), "Harry");
+                if (credential.getPort() == 40401) {
+                    System.out.println("File is locally available");
+                } else {
+                    System.out.println("xx");
+                    nodeOpsWS.triggerDownloadRequest(downloadRequest, credential);
+                }
+
+                btnDownload.setEnabled(true);
+                btnDownload.setName("DOWNLOAD");
                 txtSearch.selectAll();
             }
         });

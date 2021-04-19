@@ -20,6 +20,8 @@ public class Constant {
         public final static String SEARCHOK = "/searchok";
         public final static String JOIN = "/join";
         public final static String LEAVE = "/leave";
+        public final static String DOWNLOAD = "/download";
+        public final static String DOWNLOADOK = "/downloadok";
 
     }
     public static class Command {
@@ -34,6 +36,8 @@ public class Constant {
         public final static String SEARCH = "SER";
         public final static String SEARCHOK = "SEROK";
         public final static String ERROR = "ERROR";
+        public final static String DOWNLOAD = "DOWN";
+        public final static String DOWNLOADOK = "DOWNOK";
     }
 
     public static class Codes {
@@ -46,6 +50,11 @@ public class Constant {
         }
 
         public static class Search {
+            public final static int ERROR_NODE_UNREACHABLE = 9999;
+            public final static int ERROR_OTHER = 9998;
+
+        }
+        public static class Download {
             public final static int ERROR_NODE_UNREACHABLE = 9999;
             public final static int ERROR_OTHER = 9998;
 

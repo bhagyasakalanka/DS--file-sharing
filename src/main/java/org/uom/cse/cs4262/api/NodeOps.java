@@ -1,9 +1,11 @@
 package org.uom.cse.cs4262.api;
 
 import org.uom.cse.cs4262.api.message.Message;
+import org.uom.cse.cs4262.api.message.request.DownloadRequest;
 import org.uom.cse.cs4262.api.message.request.JoinRequest;
 import org.uom.cse.cs4262.api.message.request.LeaveRequest;
 import org.uom.cse.cs4262.api.message.request.SearchRequest;
+import org.uom.cse.cs4262.api.message.response.DownloadResponse;
 import org.uom.cse.cs4262.api.message.response.SearchResponse;
 
 import java.util.List;
@@ -55,4 +57,10 @@ public interface NodeOps {
     void removeFromStatTable(Credential credential);
 
     void logMe(String log);
+
+    boolean download(DownloadRequest downloadRequest, Credential sendCredentials);
+    void downloadOK(DownloadResponse downloadResponse);
+    void downloadSuccess(DownloadResponse downloadResponse);
+
+    void triggerDownloadRequest(DownloadRequest downloadRequest, Credential downloadCredentials);
 }

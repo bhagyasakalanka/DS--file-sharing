@@ -1,10 +1,11 @@
 package org.uom.cse.cs4262.api;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
+
 
 public class Node {
 
@@ -215,4 +216,22 @@ public class Node {
     public void incSearchedQueryCount() {
         this.searchedQueryCount++;
     }
+
+    public int getRandFileSize() { return (int)( Math.random() * 9 + 2); }
+
+    public String createDataSize(int msgSize) {
+        int sizeInMb = msgSize * 1024 * 1024;
+        StringBuilder sb = new StringBuilder(msgSize);
+        for (int i=0; i<sizeInMb; i++) {
+            sb.append(Math.round(Math.random()));
+        }
+        return sb.toString();
+    }
+    public String generateSHAHash(String file) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] a =  md.digest(file.getBytes());
+        return ( Base64.getEncoder().encodeToString(a));
+    }
+
+
 }

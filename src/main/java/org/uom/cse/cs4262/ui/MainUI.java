@@ -7,6 +7,7 @@ package org.uom.cse.cs4262.ui;
 
 import org.uom.cse.cs4262.api.Credential;
 import org.uom.cse.cs4262.api.StatRecord;
+import org.uom.cse.cs4262.api.message.request.DownloadRequest;
 import org.uom.cse.cs4262.api.message.request.SearchRequest;
 import org.uom.cse.cs4262.controller.NodeOpsWS;
 
@@ -40,6 +41,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem advUnregister;
     private javax.swing.JButton btnLeave;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnDownload;
     private javax.swing.JButton btnStop;
     private javax.swing.JButton btnUnregsiter;
     private javax.swing.JLabel jLabel1;
@@ -373,6 +375,7 @@ public class MainUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         txtSearchFile = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
+        btnDownload = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblSearchResults = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -673,6 +676,15 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
+        btnDownload.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnDownload.setText("Download");
+        btnDownload.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDownload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDownloadActionPerformed(evt);
+            }
+        });
+
         tblSearchResults.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {null, null},
@@ -699,7 +711,10 @@ public class MainUI extends javax.swing.JFrame {
                                         .addGroup(jPanel5Layout.createSequentialGroup()
                                                 .addComponent(txtSearchFile)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(btnDownload, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        ))
                                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -708,7 +723,9 @@ public class MainUI extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(txtSearchFile, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnDownload, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addContainerGap())
@@ -1100,6 +1117,19 @@ public class MainUI extends javax.swing.JFrame {
             }
             txtSearchFile.setText("");
         }
+    }
+
+    private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {
+        Credential credential = new Credential("127.0.0.1", 40401, "node1");
+        DownloadRequest downloadRequest = new DownloadRequest(nodeOpsWS.getNode().getCredential(), "Harry");
+        if (credential.getPort() == 40401) {
+            System.out.println("File is locally available");
+        } else {
+            System.out.println("xx");
+            nodeOpsWS.triggerDownloadRequest(downloadRequest, credential);
+        }
+        System.out.println("xx");
+        nodeOpsWS.triggerDownloadRequest(downloadRequest, credential);
     }
 
     private void advRegisterActionPerformed(java.awt.event.ActionEvent evt) {
