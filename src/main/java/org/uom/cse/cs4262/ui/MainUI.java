@@ -7,7 +7,6 @@ package org.uom.cse.cs4262.ui;
 
 import org.uom.cse.cs4262.api.Credential;
 import org.uom.cse.cs4262.api.StatRecord;
-import org.uom.cse.cs4262.api.message.request.DownloadRequest;
 import org.uom.cse.cs4262.api.message.request.SearchRequest;
 import org.uom.cse.cs4262.controller.NodeOpsWS;
 
@@ -15,6 +14,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
@@ -41,7 +41,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem advUnregister;
     private javax.swing.JButton btnLeave;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnDownload;
     private javax.swing.JButton btnStop;
     private javax.swing.JButton btnUnregsiter;
     private javax.swing.JLabel jLabel1;
@@ -97,6 +96,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
+    private JButton button1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -375,7 +375,6 @@ public class MainUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         txtSearchFile = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        btnDownload = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblSearchResults = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -420,11 +419,14 @@ public class MainUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(850, 650));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Node Attributes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        //jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Node Attributes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(425, 350));
+        jPanel1.setBackground(Color.CYAN);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Routing Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 182));
+        //jPanel2.setBackground(Color.CYAN);
+
 
         tblRoutingTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -448,13 +450,13 @@ public class MainUI extends javax.swing.JFrame {
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
+        jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
+        jPanel2Layout.setHorizontalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
@@ -599,8 +601,79 @@ public class MainUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
         );
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Stat Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+//                                .addGap(18, 18, 18)
+//                                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        //.addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                        .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+        );
+
+        //jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Dashboard", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel3.setPreferredSize(new java.awt.Dimension(450, 400));
+        jPanel3.setBackground(Color.LIGHT_GRAY);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Files", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel5.setPreferredSize(new java.awt.Dimension(400, 268));
+
+        txtSearchFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchFileActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSearch.setText("Search");
+        btnSearch.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        tblSearchResults.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null}
+                },
+                new String [] {
+                        "Title 1", "Title 2"
+                }
+        ));
+        tblSearchResults.setShowHorizontalLines(false);
+        tblSearchResults.setShowVerticalLines(false);
+        jScrollPane4.setViewportView(tblSearchResults);
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Stat Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel9.setPreferredSize(new java.awt.Dimension(250, 100));
         tblStatTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {null, null, null, null, null, null, null},
@@ -630,76 +703,6 @@ public class MainUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                                        .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-        );
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Dashboard", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        jPanel3.setPreferredSize(new java.awt.Dimension(450, 400));
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Files", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        jPanel5.setPreferredSize(new java.awt.Dimension(400, 268));
-
-        txtSearchFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchFileActionPerformed(evt);
-            }
-        });
-
-        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnSearch.setText("Search");
-        btnSearch.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
-        btnDownload.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnDownload.setText("Download");
-        btnDownload.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnDownload.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDownloadActionPerformed(evt);
-            }
-        });
-
-        tblSearchResults.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null},
-                        {null, null},
-                        {null, null},
-                        {null, null}
-                },
-                new String [] {
-                        "Title 1", "Title 2"
-                }
-        ));
-        tblSearchResults.setShowHorizontalLines(false);
-        tblSearchResults.setShowVerticalLines(false);
-        jScrollPane4.setViewportView(tblSearchResults);
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -711,10 +714,7 @@ public class MainUI extends javax.swing.JFrame {
                                         .addGroup(jPanel5Layout.createSequentialGroup()
                                                 .addComponent(txtSearchFile)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnDownload, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        ))
+                                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -723,9 +723,7 @@ public class MainUI extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(txtSearchFile, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnDownload, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
-
+                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addContainerGap())
@@ -968,7 +966,7 @@ public class MainUI extends javax.swing.JFrame {
         );
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Log", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        jPanel13.setPreferredSize(new java.awt.Dimension(484, 100));
+        jPanel13.setPreferredSize(new java.awt.Dimension(250, 100));
 
         tblLog.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1003,11 +1001,11 @@ public class MainUI extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
                 jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+//                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                                .addGap(26, 26, 26)
+                                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -1016,52 +1014,52 @@ public class MainUI extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                                        .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
+//                                        .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
+                                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
                                 .addContainerGap())
         );
 
-        mnuFile.setText("File");
+//        mnuFile.setText("File");
+//
+//        menuItemExit.setText("Exit");
+//        menuItemExit.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                menuItemExitActionPerformed(evt);
+//            }
+//        });
+//        mnuFile.add(menuItemExit);
+//
+//        jMenuBar1.add(mnuFile);
+//
+//        jMenu4.setText("Advance");
 
-        menuItemExit.setText("Exit");
-        menuItemExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemExitActionPerformed(evt);
-            }
-        });
-        mnuFile.add(menuItemExit);
-
-        jMenuBar1.add(mnuFile);
-
-        jMenu4.setText("Advance");
-
-        advRegister.setText("Register");
-        advRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                advRegisterActionPerformed(evt);
-            }
-        });
-        jMenu4.add(advRegister);
-
-        advUnregister.setText("Unregister");
-        advUnregister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                advUnregisterActionPerformed(evt);
-            }
-        });
-        jMenu4.add(advUnregister);
-
-        advLeave.setText("Leave");
-        advLeave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                advLeaveActionPerformed(evt);
-            }
-        });
-        jMenu4.add(advLeave);
-
-        jMenuBar1.add(jMenu4);
-
-        setJMenuBar(jMenuBar1);
+//        advRegister.setText("Register");
+//        advRegister.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                advRegisterActionPerformed(evt);
+//            }
+//        });
+//        jMenu4.add(advRegister);
+//
+//        advUnregister.setText("Unregister");
+//        advUnregister.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                advUnregisterActionPerformed(evt);
+//            }
+//        });
+//        jMenu4.add(advUnregister);
+//
+//        advLeave.setText("Leave");
+//        advLeave.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                advLeaveActionPerformed(evt);
+//            }
+//        });
+//        jMenu4.add(advLeave);
+//
+//        jMenuBar1.add(jMenu4);
+//
+//        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1117,19 +1115,6 @@ public class MainUI extends javax.swing.JFrame {
             }
             txtSearchFile.setText("");
         }
-    }
-
-    private void btnDownloadActionPerformed(java.awt.event.ActionEvent evt) {
-        Credential credential = new Credential("127.0.0.1", 40401, "node1");
-        DownloadRequest downloadRequest = new DownloadRequest(nodeOpsWS.getNode().getCredential(), "Harry");
-        if (credential.getPort() == 40401) {
-            System.out.println("File is locally available");
-        } else {
-            System.out.println("xx");
-            nodeOpsWS.triggerDownloadRequest(downloadRequest, credential);
-        }
-        System.out.println("xx");
-        nodeOpsWS.triggerDownloadRequest(downloadRequest, credential);
     }
 
     private void advRegisterActionPerformed(java.awt.event.ActionEvent evt) {
