@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @Configuration
-@ComponentScan("org.uom.cse.cs4262")
+@ComponentScan("org.example.com.ds")
 @EnableAutoConfiguration
 @RestController
 public class BSNode extends SpringBootServletInitializer {
